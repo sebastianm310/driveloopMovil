@@ -8,17 +8,25 @@ interface ScreenLayoutProps {
     paddingHorizontal?: number;
 }
 
-const ScreenLayout = ({ children, scrollable = true, paddingHorizontal = 6 }: ScreenLayoutProps) => {
-    const Container = scrollable ? ScrollView : View;
+const ScreenLayout = ({ children, scrollable = true, paddingHorizontal = 24 }: ScreenLayoutProps) => {
+    if (scrollable) {
+        return (
+            <SafeAreaView className="flex-1 bg-white">
+                <ScrollView
+                    contentContainerStyle={{ flexGrow: 1, paddingHorizontal }}
+                    className="flex-1"
+                >
+                    {children}
+                </ScrollView>
+            </SafeAreaView>
+        );
+    }
 
     return (
         <SafeAreaView className="flex-1 bg-white">
-            <Container
-                contentContainerStyle={scrollable ? { flexGrow: 1 } : undefined}
-                className={`flex-1 px-${paddingHorizontal}`}
-            >
+            <View style={{ flex: 1, paddingHorizontal }}>
                 {children}
-            </Container>
+            </View>
         </SafeAreaView>
     );
 };

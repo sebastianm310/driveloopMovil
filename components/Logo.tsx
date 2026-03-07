@@ -6,9 +6,9 @@ interface LogoProps extends ViewProps {
     height?: number | string;
 }
 
-const Logo = ({ width = 192, height = 96, style, ...props }: LogoProps) => {
+const Logo = ({ width = 192, height = 96, style, className, ...props }: LogoProps) => {
     return (
-        <View className="items-center" style={style} {...props}>
+        <View className={`w-full items-center ${className || ''}`} style={style} {...props}>
             <Image
                 source={require('../assets/images/logo.png')}
                 style={{
