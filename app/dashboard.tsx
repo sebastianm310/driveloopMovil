@@ -17,7 +17,7 @@ const Dashboard = () => {
           <MenuCard
             title="Configuración de cuenta"
             Icon={User}
-            onPress={() => router.push("/configUser")}
+            onPress={() => router.push('/accountSettings' as any)}
           />
         </View>
 
