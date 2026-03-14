@@ -23,30 +23,30 @@ const AccountSettings = () => {
             <View className="flex-1">
                 <View className="flex-1 justify-center pb-12">
                     <View className="flex-row">
-                        <MenuCard 
-                            title="Información de perfil" 
-                            onPress={() => router.push('/configUser' as any)} 
+                        <MenuCard
+                            title="Información de perfil"
+                            onPress={() => router.push('/profileInfo' as any)}
                         />
                     </View>
                     <View className="flex-row">
-                        <MenuCard 
-                            title="Actualizar contraseña" 
-                            onPress={() => router.push('/updatePassword' as any)} 
+                        <MenuCard
+                            title="Actualizar contraseña"
+                            onPress={() => router.push('/updatePassword' as any)}
                         />
                     </View>
                     <View className="flex-row">
-                        <MenuCard 
-                            title="Borrar cuenta" 
-                            onPress={() => console.log('Borrar cuenta')} 
+                        <MenuCard
+                            title="Borrar cuenta"
+                            onPress={() => console.log('Borrar cuenta')}
                         />
                     </View>
                 </View>
-                
+
                 <View className="mb-10">
                     <View className="flex-row">
-                        <MenuCard 
-                            title="Cerrar sesión" 
-                            onPress={() => console.log('Cerrar sesión')} 
+                        <MenuCard
+                            title="Cerrar sesión"
+                            onPress={() => console.log('Cerrar sesión')}
                         />
                     </View>
                 </View>
