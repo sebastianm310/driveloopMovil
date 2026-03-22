@@ -2,8 +2,8 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import InfoCard from "../components/InfoCard";
-import ScreenLayout from "../components/ScreenLayout";
+import InfoCard from "../../../components/InfoCard";
+import ScreenLayout from "../../../components/ScreenLayout";
 
 export default function ProfileInfo() {
   const router = useRouter();

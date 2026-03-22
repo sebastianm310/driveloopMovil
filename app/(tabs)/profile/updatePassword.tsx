@@ -2,9 +2,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import CustomButton from '../components/CustomButton';
-import PasswordUpdateCard from '../components/PasswordUpdateCard';
-import ScreenLayout from '../components/ScreenLayout';
+import CustomButton from '../../../components/CustomButton';
+import PasswordUpdateCard from '../../../components/PasswordUpdateCard';
+import ScreenLayout from '../../../components/ScreenLayout';
 
 const UpdatePassword = () => {
     const router = useRouter();

@@ -2,9 +2,9 @@ import { router } from "expo-router";
 import { FileText, User } from "lucide-react-native";
 import React from "react";
 import { View } from "react-native";
-import Logo from "../components/Logo";
-import MenuCard from "../components/MenuCard";
-import ScreenLayout from "../components/ScreenLayout";
+import Logo from "../../components/Logo";
+import MenuCard from "../../components/MenuCard";
+import ScreenLayout from "../../components/ScreenLayout";
 
 const Dashboard = () => {
   return (

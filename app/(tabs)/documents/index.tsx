@@ -2,8 +2,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import MenuCard from '../components/MenuCard';
-import ScreenLayout from '../components/ScreenLayout';
+import MenuCard from '../../../components/MenuCard';
+import ScreenLayout from '../../../components/ScreenLayout';
 
 const Documents = () => {
     const router = useRouter();

@@ -2,10 +2,10 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import CustomButton from '../components/CustomButton';
-import CustomInput from '../components/CustomInput';
-import Logo from '../components/Logo';
-import ScreenLayout from '../components/ScreenLayout';
+import CustomButton from '../../components/CustomButton';
+import CustomInput from '../../components/CustomInput';
+import Logo from '../../components/Logo';
+import ScreenLayout from '../../components/ScreenLayout';
 
 const Register = () => {
     const router = useRouter();
