@@ -9,6 +9,8 @@ interface DocumentFieldCardProps {
     onChangeText?: (text: string) => void;
     isDropdown?: boolean;
     onPressDropdown?: () => void;
+    maxLength?: number;
+    keyboardType?: 'default' | 'numeric' | 'email-address' | 'phone-pad';
 }
 
 const DocumentFieldCard = ({ 
@@ -17,7 +19,9 @@ const DocumentFieldCard = ({
     value, 
     onChangeText, 
     isDropdown = false,
-    onPressDropdown
+    onPressDropdown,
+    maxLength,
+    keyboardType
 }: DocumentFieldCardProps) => {
     return (
         <View className="border border-primary/40 rounded-xl p-4 mb-4 bg-white">
@@ -41,6 +45,8 @@ const DocumentFieldCard = ({
                         placeholder={placeholder}
                         value={value}
                         onChangeText={onChangeText}
+                        maxLength={maxLength}
+                        keyboardType={keyboardType}
                     />
                 </View>
             )}

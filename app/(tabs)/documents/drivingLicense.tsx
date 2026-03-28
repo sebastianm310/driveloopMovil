@@ -105,11 +105,13 @@ const DrivingLicense = () => {
                                 </View>
                             )}
                             <DocumentFieldCard
-                        label="Número de Licencia"
-                        value={licenseNumber}
-                        onChangeText={setLicenseNumber}
-                        placeholder="Ej. 1000222333"
-                    />
+                                label="Número de Licencia"
+                                value={licenseNumber}
+                                onChangeText={setLicenseNumber}
+                                placeholder="Ej. 1000222333"
+                                maxLength={10}
+                                keyboardType="numeric"
+                            />
 
                     <DocumentUploadCard
                         label="Fotos de la Licencia (Anverso y Reverso)"
