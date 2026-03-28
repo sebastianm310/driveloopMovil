@@ -58,3 +58,13 @@ export const getMyDocuments = async () => {
         throw new Error('No se pudo verificar el estado de tus documentos');
     }
 };
+
+// Esta función obtiene los tipos de documentos disponibles (Cédula, etc)
+export const getDocumentTypes = async () => {
+    try {
+        const response = await api.get('/user/documents/types');
+        return response.data.data; // Devuelve [{id: 1, nom: 'Cédula', des: '...'}, ...]
+    } catch (error) {
+        throw new Error('No se pudieron cargar los tipos de documento');
+    }
+};
