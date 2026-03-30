@@ -106,8 +106,7 @@ export default function ProfileInfo() {
           showButton={true}
           buttonTitle="MODIFICAR"
           onPressButton={() => {
-            console.log("Modificar Teléfono");
-            // Aquí logica para modificar
+            router.push('/profile/updatePhoneNumber');
           }}
         />
 
