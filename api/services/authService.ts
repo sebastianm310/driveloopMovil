@@ -56,3 +56,64 @@ export const requestPasswordReset = async (email: string) => {
         }
     }
 };
+/**
+ * Registra un nuevo usuario enviando los datos a la API de Laravel.
+ * Si el registro es exitoso, guarda el token y los datos del usuario localmente.
+ * 
+ * @param userData Objeto con name, last_name, email, password y password_confirmation.
+ * @returns Los datos del usuario registrado.
+ * @throws Error con un mensaje descriptivo si la validación falla o hay error de red.
+ */
+export const registerUser = async (userData: any) => {
+    try {
+        // Combinamos los datos del formulario con el nombre del dispositivo requerido por Sanctum
+        const requestData = {
+            ...userData,
+            device_name: 'Mobile' // Identificador para la sesión de este dispositivo
+        };
+
+        // Realizamos la petición POST al endpoint definido en el backend Laravel (/api/register)
+        const response = await api.post('/register', requestData);
+
+        // Extraemos el token y el perfil del usuario de la respuesta estructurada de la API
+        const token = response.data.data.user.token;
+        const user = response.data.data.user;
+
+        // Almacenamos el Token de forma segura para usarlo en futuras peticiones (Bearer Auth)
+        await SecureStore.setItemAsync('userToken', token);
+        // Guardamos los datos básicos del usuario para mostrarlos en el perfil sin consultar la API de nuevo
+        await SecureStore.setItemAsync('userData', JSON.stringify(user));
+
+        return user;
+    } catch (error: any) {
+        console.error("DEBUG: Error en registro:", error);
+
+        // El servidor respondió con un error (4xx o 5xx)
+        if (error.response) {
+            const status = error.response.status;
+            const data = error.response.data;
+
+            if (status === 422) {
+                // Error de validación (ej. email duplicado)
+                const errors = data.errors;
+                const firstError = Object.values(errors)[0] as string[];
+                throw new Error(firstError[0] || 'Error de validación');
+            } else if (status === 419) {
+                throw new Error('Sesión expirada o falta de protección CSRF');
+            } else if (status === 500) {
+                // Error interno del servidor; mostramos el mensaje que mande Laravel si está disponible
+                throw new Error(data.message || 'Error interno en el servidor de la web');
+            } else {
+                throw new Error(`Error ${status}: ${data.message || 'Respuesta inesperada del servidor'}`);
+            }
+        }
+        // El servidor no respondió o la petición no se mandó (caída de internet, URL invalida)
+        else if (error.request) {
+            throw new Error('No se pudo establecer conexión con el servidor. Verifica tu internet o la URL de la API.');
+        }
+        // Algo pasó al configurar la petición
+        else {
+            throw new Error(error.message || 'Error desconocido al procesar el registro');
+        }
+    }
+};

@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 // Configuramos la instancia de axios
 const api = axios.create({
     baseURL: 'https://driveloop.ddns.net/api',
+    // Lo dejo aqui para ajustarlo con la url real de la api
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
