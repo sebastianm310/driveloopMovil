@@ -81,5 +81,15 @@ export const updatePhoneNumberUser = async (newPhoneNumber: string) => {
     }
 };
 
+export const getReservationsUser = async () => {
+    try {
+        const response = await api.get('/user/reservations');
+        return response.data;
+    } catch (error: any) {
+        const message = error.response?.data?.message || 'Error al obtener las reservas';
+        throw new Error(message);
+    }
+};
+
 
 
