@@ -52,7 +52,7 @@ export default function ProfileInfo() {
     return (
       <ScreenLayout paddingHorizontal={8}>
         <View className="flex-1 justify-center items-center">
-          <ActivityIndicator size="large" color="#0000ff" />
+          <ActivityIndicator size="large" color="#C91843" />
           <Text className="mt-4 text-gray-500">Cargando información...</Text>
         </View>
       </ScreenLayout>
