@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { ActivityIndicator, Alert, Text, View } from 'react-native';
 import { registerUser } from '../../api/services/authService';
@@ -146,7 +146,7 @@ const Register = () => {
                         onPress={() => setAccepted(!accepted)}
                     />
                     <Text className="ml-3 text-gray-500 text-sm font-roboto-light">
-                        Acepto los <Text className="text-blue-400">términos y condiciones</Text>
+                        Acepto los <Link href="https://driveloop.ddns.net/terminos.pdf"className="text-blue-400">términos y condiciones</Link>
                     </Text>
                 </View>
             </View>
