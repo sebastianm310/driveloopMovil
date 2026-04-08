@@ -31,17 +31,12 @@ export default function Dashboard() {
         const data = await getReservationsUser();
         let resList: any[] = [];
 
-        // Manejamos distintos formatos de respuesta para extraer el array de reservaciones
-        if (Array.isArray(data)) {
-          resList = data;
-        } else if (data && data.data && Array.isArray(data.data)) {
-          resList = data.data;
-        } else if (data && typeof data === 'object') {
-          resList = (Object.values(data).find(val => Array.isArray(val)) as any[]) || [];
-        }
+        // Imprimimos en consola para ver la estructura exacta que nos llega del backend
+        console.log("=== DATA DE RESERVAS ===", JSON.stringify(data, null, 2));
+
+        resList = data;
 
         // Ordenamos por `id` (o `codigo`) de forma descendente para tener las últimas 4.
-        // Es más confiable ordenar por ID numérico en React Native que por fecha.
         resList.sort((a, b) => {
           const idA = a.cod;
           const idB = b.cod;
@@ -53,6 +48,7 @@ export default function Dashboard() {
           // Fallback a fecrea si no envías el ID (aunque Date a veces falla en iOS)
           return new Date(b.fecrea).getTime() - new Date(a.fecrea).getTime();
         });
+        //Tomar las ultimas 4 reservas
         setReservations(resList.slice(0, 4));
       } catch (error) {
         console.error("Error al obtener las reservas:", error);
@@ -187,7 +183,6 @@ export default function Dashboard() {
             ))
           )}
         </View>
-
       </ScrollView>
     </SafeAreaView>
   );

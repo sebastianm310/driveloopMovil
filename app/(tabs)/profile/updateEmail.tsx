@@ -49,7 +49,6 @@ export default function UpdateEmail() {
                     Ingresa tu nuevo correo electrónico. Te enviaremos un enlace de verificación.
                 </Text>
 
-                {/* TextInput nativo con clases de Tailwind que combinen con tus InfoCards */}
                 <View className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-8">
                     <CustomInput
                         placeholder="Nuevo Correo"

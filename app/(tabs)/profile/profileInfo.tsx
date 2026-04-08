@@ -1,7 +1,7 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Alert, Button, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Text, View } from "react-native";
 import CustomButton from "../../../components/CustomButton";
 import InfoCard from "../../../components/InfoCard";
 import ScreenLayout from "../../../components/ScreenLayout";
@@ -65,8 +65,7 @@ export default function ProfileInfo() {
       <ScreenLayout paddingHorizontal={8}>
         <View className="flex-1 justify-center items-center">
           <Text className="text-red-500 mb-4 text-center font-roboto-bold text-lg">{error}</Text>
-          {/* Usamos un Botón nativo aquí para evitar errores de Props con CustomButton, cámbialo si quieres */}
-          <Button title="Intentar de nuevo" onPress={fetchProfileData} />
+          <CustomButton title="Intentar de nuevo" onPress={fetchProfileData} />
         </View>
       </ScreenLayout>
     );

@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { ActivityIndicator, Alert, Text, View } from 'react-native';
 
-// Importa el nuevo servicio de borrado (lo haremos en el paso 2) y el de logout
+// Importa el nuevo servicio de borrado y el de logout
 import { deleteAccountUser, logoutUser } from '../../../api/services/authService';
 
 import CustomButton from '../../../components/CustomButton';
@@ -15,7 +15,7 @@ export default function DeleteAccount() {
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    // 1. Método para pedir confirmación ANTES de eliminar
+    // 1. Método para pedir confirmación antes de eliminar
     const confirmDelete = () => {
         if (!password) {
             Alert.alert('Precaución', 'Debes ingresar tu contraseña actual para continuar.');
@@ -34,16 +34,16 @@ export default function DeleteAccount() {
         );
     };
 
-    // 2. Método que realmente se conecta al backend (Laravel)
+    // 2. Método que se conecta al proyecto web
     const executeDelete = async () => {
         setIsLoading(true);
         try {
-            // Laravel procesa y valida la contraseña
+            // Procesa y valida la contraseña
             await deleteAccountUser(password);
 
             Alert.alert('Éxito', 'Tu cuenta ha sido eliminada permanentemente.');
 
-            // Si Laravel dijo OK, limpiamos el SecureStore de la sesión actual
+            // Si el proyecto web dijo OK, limpiamos el SecureStore de la sesión actual
             await logoutUser();
 
             // Lo enviamos fuera de la app
@@ -97,8 +97,6 @@ export default function DeleteAccount() {
                         title="Eliminar mi cuenta"
                         onPress={confirmDelete}
                         variant="outline"
-                    // Aquí idealmente le pasas la variante visual que indique peligro (rojo)
-                    // Ej. variant="outline"
                     />
                 )}
             </View>

@@ -49,7 +49,6 @@ export default function UpdatePhoneNumber() {
                 <Text className="text-base text-gray-600 mb-4">
                     Ingresa tu nuevo número de teléfono.
                 </Text>
-                {/* TextInput nativo con clases de Tailwind que combinen con tus InfoCards */}
                 <View className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-8">
                     <CustomInput
                         placeholder="Nuevo Número de Teléfono"

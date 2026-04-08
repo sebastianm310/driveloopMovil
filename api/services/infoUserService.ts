@@ -36,7 +36,7 @@ export const updateEmailUser = async (newEmail: string) => {
                 throw new Error(validationErrors.email[0]);
             }
         }
-        // 2. Manejo genérico para cualquier otro error (ej. 401, 500, etc.)
+        // 2. Manejo genérico para cualquier otro error
         const message = error.response?.data?.message || 'Error al intentar actualizar el correo';
         throw new Error(message);
     }
@@ -75,12 +75,13 @@ export const updatePhoneNumberUser = async (newPhoneNumber: string) => {
                 throw new Error(validationErrors.tel[0]);
             }
         }
-        // 2. Manejo genérico para cualquier otro error (ej. 401, 500, etc.)
+        // 2. Manejo genérico para cualquier otro error
         const message = error.response?.data?.message || 'Error al intentar actualizar el número de teléfono';
         throw new Error(message);
     }
 };
 
+//Metodo para obtener las reservas del usuario
 export const getReservationsUser = async () => {
     try {
         const response = await api.get('/user/reservations');
